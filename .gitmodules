@@ -1,0 +1,3 @@
+[submodule "providers/xapi"]
+	path = providers/xapi
+	url = https://github.com/thruthesky/ionic-xapi
