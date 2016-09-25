@@ -27,8 +27,16 @@ export class RegisterPage {
     t.Mobile = "휴대폰 번호";
     t.Birthday = "생년월일";
     t.Gender = "성별";
-    t.Register = "가입";
+    t.Register = "회원 가입";
     t.Cancel = "취소";
+
+    t.Input_User_ID = '회원 아이디를 입력하십시오.';
+    t.Input_Password = '비밀번호를 입력하십시오.';
+    t.Input_Email = '이메일을 입력하십시오.';
+    t.Input_Name = '이름을 입력하십시오.';
+    t.Input_Mobile = '휴대폰 번호를 입력하십시오.';
+    t.Input_Birthday = '생년월일을 선택(입력)하십시오.';
+    t.Input_Gender = '성별을 선택하십시오.';
   }
   onBeforeRegister( r: RegisterTemplate ) {
     console.log("HomePage::onBeforeRegister()");
@@ -50,6 +58,8 @@ export class RegisterPage {
   onSuccess( user: wi.UserData ) {
     console.log("onSuccess() ", user );
     this.loading = false;
+    this.errorMessage = '';
+    
   }
 }
 
