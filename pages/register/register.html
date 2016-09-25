@@ -1,0 +1,17 @@
+<ion-header>
+  <xapi-header #header [appTitle]="appTitle"></xapi-header>
+</ion-header>
+<ion-content padding>
+  <xapi-register #Register
+      (beforeRegister)="onBeforeRegister($event)"
+      (success)="onSuccess($event)"
+      (cancel)="onCancel($event)"
+      (error)="onError($event)"
+    ></xapi-register>
+    <div *ngIf="loading">
+      <ion-spinner></ion-spinner>
+    </div>
+    <div *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+</ion-content>

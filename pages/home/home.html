@@ -2,11 +2,5 @@
   <xapi-header #header [appTitle]="appTitle"></xapi-header>
 </ion-header>
 <ion-content padding>
-  The world is your oyster.
-  <xapi-register #Register
-      (beforeRegister)="onBeforeRegister($event)"
-      (afterRegister)="onAfterRegister($event)"
-      (cancel)="onCancel($event)"
-      (error)="onError($event)"
-    ></xapi-register>
+<button (click)="onClickRegister()">Register</button>
 </ion-content>
