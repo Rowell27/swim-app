@@ -28,6 +28,7 @@ export class RegisterPage {
     t.Birthday = "생년월일";
     t.Gender = "성별";
     t.Register = "회원 가입";
+    t.Update = "회원 정보 수정";
     t.Cancel = "취소";
 
     t.Input_User_ID = '회원 아이디를 입력하십시오.';
