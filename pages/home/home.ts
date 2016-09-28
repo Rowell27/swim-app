@@ -16,6 +16,6 @@ export class HomePage {
     this.navCtrl.push( RegisterPage );
   }
   ionViewLoaded() {
-    this.navCtrl.push( RegisterPage );
+    //this.navCtrl.push( RegisterPage );
   }
 }

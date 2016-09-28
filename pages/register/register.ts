@@ -4,18 +4,27 @@ import { AppHeader } from '../../xapi/template/app-header';
 import { RegisterTemplate } from '../../xapi/template/register';
 import * as wi from '../../xapi/interface/wordpress';
 import { Language } from '../../xapi/service/language';
+import { Xapi } from '../../xapi/service/xapi';
 @Component({
   templateUrl: 'build/pages/register/register.html',
-  directives: [ AppHeader, RegisterTemplate ]
+  directives: [ AppHeader, RegisterTemplate ],
+  providers: [ Xapi]
 })
 
 export class RegisterPage {
   @ViewChild('Register') register: RegisterTemplate;
+  @ViewChild('Header') header: AppHeader;
   private appTitle: string = '';
   private loading: boolean = false;
   private errorMessage: string = '';
-  constructor(public navCtrl: NavController) {
+  constructor(
+    public navCtrl: NavController,
+    private x: Xapi ) {
     this.appTitle = 'Home';
+    this.x.getLoginData( i => this.userLoggedIn( i ) );
+  }
+  userLoggedIn(i) {
+    console.log("RegisterPage::userLogged()", i);
   }
   ionViewLoaded() {
     let register = this.register;
@@ -60,7 +69,8 @@ export class RegisterPage {
     console.log("onSuccess() ", user );
     this.loading = false;
     this.errorMessage = '';
-    
+    this.x.alert("SUCCESS", "회원가입을 하였습니다.");
+    this.navCtrl.pop();
   }
 }
 
