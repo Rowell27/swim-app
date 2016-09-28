@@ -1,21 +1,36 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { AppHeader } from '../../xapi/template/app-header';
+import * as x from '../../xapi/all';
 import { RegisterPage } from '../register/register';
+import { LoginPage } from '../login/login';
 @Component({
   templateUrl: 'build/pages/home/home.html',
-  directives: [ AppHeader ]
+  directives: [ x.AppHeader ],
+  providers: [ x.Xapi ]
 })
 
 export class HomePage {
-  appTitle;
-  constructor(public navCtrl: NavController) {
-    this.appTitle = 'Home';
+  private appTitle;
+  private user: x.UserData;
+  constructor(
+    public navCtrl: NavController,
+    private api: x.Xapi
+    ) {
+    this.appTitle = 'Swimming 3';
+    this.api.getLoginData( x => this.userLoggedIn( x ) );
+  }
+  userLoggedIn( user: x.UserData ) {
+    this.user = user;
+  }
+  ionViewLoaded() {
+    console.log("HomePage::ionViewLoaded()");
+    //this.navCtrl.push( RegisterPage );
+    //this.navCtrl.push( LoginPage );
   }
   onClickRegister() {
     this.navCtrl.push( RegisterPage );
   }
-  ionViewLoaded() {
-    //this.navCtrl.push( RegisterPage );
+  onClickLogin() {
+    this.navCtrl.push( LoginPage );
   }
 }

@@ -1,12 +1,22 @@
 <ion-header>
-  <xapi-header #header [appTitle]="appTitle"></xapi-header>
+  <xapi-header #Header [appTitle]="appTitle"></xapi-header>
 </ion-header>
 <ion-content padding>
-<button (click)="onClickRegister()">Register</button>
-<button (click)="onClickLogin()">Login</button>
-<button (click)="onClickUpdate()">Update</button>
-<button (click)="onClickLogout()">Logout</button>
-<button (click)="onClickResign()">Resign</button>
+
+  <section *ngIf="user">
+    Welcome {{ user.user_login }}, ...
+    <div class="buttons">
+      <button (click)="onClickUpdate()">Update</button>
+      <button (click)="onClickLogout()">Logout</button>
+      <button (click)="onClickResign()">Resign</button>
+    </div>
+  </section>
+  <section *ngIf="!user">
+    <div class="buttons">
+      <button (click)="onClickLogin()">Login</button>
+      <button (click)="onClickRegister()">Register</button>
+    </div>
+  </section>
 
 <ul>
   TODO

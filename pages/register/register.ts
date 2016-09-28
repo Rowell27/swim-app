@@ -48,8 +48,13 @@ export class RegisterPage {
     t.Input_Birthday = '생년월일을 선택(입력)하십시오.';
     t.Input_Gender = '성별을 선택하십시오.';
   }
-  onBeforeRegister( r: RegisterTemplate ) {
-    console.log("HomePage::onBeforeRegister()");
+  onBeforeRequest( r: RegisterTemplate ) {
+    console.log("HomePage::onBeforeRequest()");
+    console.log( r.t );
+    this.loading = true;
+  }
+  onAfterRequest( r: RegisterTemplate ) {
+    console.log("HomePage::onAfterRequset()");
     console.log( r.t );
     this.loading = true;
   }
